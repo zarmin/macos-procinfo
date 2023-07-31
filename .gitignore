@@ -1,6 +1,7 @@
 build
 bin
 procinfo
+procinfo_san
 a
 
 .vscode/*

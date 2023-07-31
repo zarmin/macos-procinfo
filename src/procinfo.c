@@ -20,6 +20,11 @@ int print_process_info(int pid) {
         perror("sysctl");
         return 1;
     }
+    
+    if (proc_info.kp_proc.p_pid == 0) {
+        printf("No process with PID %d\n", pid);
+        return 1;
+    }
 
     printf("Process information for PID %d:\n", pid);
     printf("  Process Name: %s\n", proc_info.kp_proc.p_comm);
@@ -152,11 +157,17 @@ int main(int argc, char *argv[]) {
 
     int pid = atoi(argv[1]);
 
-    print_process_info(pid);
+    if (print_process_info(pid) != 0) {
+        return 1;
+    }
     puts("");
-    print_io_statistics(pid);
+    if (print_io_statistics(pid) != 0) {
+        return 1;
+    }
     puts("");
-    print_open_files(pid);
+    if (print_open_files(pid) != 0) {
+        return 1;
+    }
     
     return 0;
 }
