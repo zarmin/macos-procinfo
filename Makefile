@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -O2
+CFLAGS = -Wall -O2 -Wextra -Wconversion -Wdouble-promotion -Wno-unused-parameter -Wno-unused-function -Wno-sign-conversion
 LDFLAGS =
 SRCDIR = src
 OBJDIR = bin

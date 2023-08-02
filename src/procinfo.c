@@ -98,9 +98,9 @@ const char *openflags_human(int openflags) {
     }
 
     if (openflags > 3) {
-        sprintf(buffer, "%s 0x%06x", prefix, openflags);
+        snprintf(buffer, sizeof(buffer), "%s 0x%06x", prefix, openflags);
     } else {
-        sprintf(buffer, "%s         ", prefix);
+        snprintf(buffer, sizeof(buffer), "%s         ", prefix);
     }
 
     return buffer;    
